@@ -56,6 +56,8 @@ module filter_3x3_720px
 	reg state_ram4, state_ram5, state_ram6;
 	reg state_ram7, state_ram8, state_ram9;
 
+	wire [8:0] state_combine; 	// Combine all state_ram to indicate which row is written better
+
 	always @ (posedge wren, posedge reset) begin
         if (reset == 1) begin
 			state_ram1 <= 1;
@@ -80,6 +82,8 @@ module filter_3x3_720px
 			state_ram9 <= state_ram8;
         end
 	end
+
+	assign state_combine = {state_ram9,state_ram8,state_ram7,state_ram6,state_ram5,state_ram4,state_ram3,state_ram2,state_ram1};
 /******************************************************************************/
 /******************************************************************************/
 	// enable signal for each row of ram
@@ -97,8 +101,6 @@ module filter_3x3_720px
 	assign wren_row8 = (wren == 1) & (state_ram8);
 	assign wren_row9 = (wren == 1) & (state_ram9);	
 /******************************************************************************/
-/******************************************************************************/
-	
 	// flag to determine the middle px
 	wire flag_cursor_mid;
 
@@ -171,7 +173,22 @@ module filter_3x3_720px
 	wire [15:0] d71, d72, d73,
 				d81, d82, d83,
 				d91, d92, d93;
-				
+
+	case (state_combine)
+		9'b0_0000_0001:begin
+			assign d11 = q21;
+			assign d21 = q31;
+			assign d31 = q41;
+			assign d41 = q51;
+			assign d51 = q61;
+			assign d61 = q71;
+			assign d71 = q81;
+			assign d81 = q91;
+			assign d91 = q11;
+		end	
+		default: 
+	endcase			
+
 	assign d11 = (state_ram3 == 1)? q11 : (state_ram1 == 1)? q21 : q31;
 	assign d12 = (state_ram3 == 1)? q12 : (state_ram1 == 1)? q22 : q32;
 	assign d13 = (state_ram3 == 1)? q13 : (state_ram1 == 1)? q23 : q33;
