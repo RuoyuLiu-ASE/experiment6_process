@@ -223,7 +223,7 @@ module filter_3x3_720px
 	assign d31 = (state_ram3 == 1)? q31 : (state_ram1 == 1)? q11 : q21;
 	assign d32 = (state_ram3 == 1)? q32 : (state_ram1 == 1)? q12 : q22;
 	assign d33 = (state_ram3 == 1)? q33 : (state_ram1 == 1)? q13 : q23;				
-******************************************************************************/			
+
 	wire [15:0] q41, q42, q43,
 				q51, q52, q53,
 				q61, q62, q63;
@@ -241,7 +241,7 @@ module filter_3x3_720px
 	assign d61 = (state_ram6 == 1)? q61 : (state_ram4 == 1)? q41 : q51;
 	assign d62 = (state_ram6 == 1)? q62 : (state_ram4 == 1)? q42 : q43;
 	assign d63 = (state_ram6 == 1)? q63 : (state_ram4 == 1)? q43 : q53;
-/******************************************************************************/
+
 	wire [15:0] q71, q72, q73,
 				q81, q82, q83,
 				q91, q92, q93;
@@ -259,7 +259,7 @@ module filter_3x3_720px
 	assign d91 = (state_ram9 == 1)? q91 : (state_ram7 == 1)? q71 : q81;
 	assign d92 = (state_ram9 == 1)? q92 : (state_ram7 == 1)? q72 : q82;
 	assign d93 = (state_ram9 == 1)? q93 : (state_ram7 == 1)? q73 : q83;	
-/******************************************************************************/	
+*****************************************************************************/	
 	// filter color data
 
 
