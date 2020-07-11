@@ -486,36 +486,6 @@ module filter_3x3_720px
 			assign d93 = 16'b0;
 		end 
 	endcase			
-
-	assign d11 = (state_ram3 == 1)? q11 : (state_ram1 == 1)? q21 : q31;
-	assign d12 = (state_ram3 == 1)? q12 : (state_ram1 == 1)? q22 : q32;
-	assign d13 = (state_ram3 == 1)? q13 : (state_ram1 == 1)? q23 : q33;
-	assign d21 = (state_ram3 == 1)? q21 : (state_ram1 == 1)? q31 : q11;
-	assign d22 = (state_ram3 == 1)? q22 : (state_ram1 == 1)? q32 : q12;
-	assign d23 = (state_ram3 == 1)? q23 : (state_ram1 == 1)? q33 : q13;
-	assign d31 = (state_ram3 == 1)? q31 : (state_ram1 == 1)? q11 : q21;
-	assign d32 = (state_ram3 == 1)? q32 : (state_ram1 == 1)? q12 : q22;
-	assign d33 = (state_ram3 == 1)? q33 : (state_ram1 == 1)? q13 : q23;
-
-	assign d41 = (state_ram6 == 1)? q41 : (state_ram4 == 1)? q51 : q61;
-	assign d42 = (state_ram6 == 1)? q42 : (state_ram4 == 1)? q52 : q62;
-	assign d43 = (state_ram6 == 1)? q43 : (state_ram4 == 1)? q53 : q63;
-	assign d51 = (state_ram6 == 1)? q51 : (state_ram4 == 1)? q61 : q41;
-	assign d52 = (state_ram6 == 1)? q52 : (state_ram4 == 1)? q62 : q42;
-	assign d53 = (state_ram6 == 1)? q53 : (state_ram4 == 1)? q63 : q43;
-	assign d61 = (state_ram6 == 1)? q61 : (state_ram4 == 1)? q41 : q51;
-	assign d62 = (state_ram6 == 1)? q62 : (state_ram4 == 1)? q42 : q43;
-	assign d63 = (state_ram6 == 1)? q63 : (state_ram4 == 1)? q43 : q53;
-
-	assign d71 = (state_ram9 == 1)? q71 : (state_ram7 == 1)? q81 : q91;
-	assign d72 = (state_ram9 == 1)? q72 : (state_ram7 == 1)? q82 : q92;
-	assign d73 = (state_ram9 == 1)? q73 : (state_ram7 == 1)? q83 : q83;
-	assign d81 = (state_ram9 == 1)? q81 : (state_ram7 == 1)? q91 : q71;
-	assign d82 = (state_ram9 == 1)? q82 : (state_ram7 == 1)? q92 : q72;
-	assign d83 = (state_ram9 == 1)? q83 : (state_ram7 == 1)? q93 : q73;
-	assign d91 = (state_ram9 == 1)? q91 : (state_ram7 == 1)? q71 : q81;
-	assign d92 = (state_ram9 == 1)? q92 : (state_ram7 == 1)? q72 : q82;
-	assign d93 = (state_ram9 == 1)? q93 : (state_ram7 == 1)? q73 : q83;	
 /******************************************************************************/
 /******************************************************************************
 //注意：这里是小套娃，每三行ram套一个。如果最后结果不对，很有可能是9行ram的大套娃
@@ -576,26 +546,451 @@ module filter_3x3_720px
 	assign d93 = (state_ram9 == 1)? q93 : (state_ram7 == 1)? q73 : q83;	
 *****************************************************************************/	
 	// filter color data
+	wire [4:0] f_11_r, f_12_r, f_13_r,
+				 f_21_r, f_22_r, f_23_r,
+				 f_31_r, f_32_r, f_33_r;
 
+	wire [5:0] f_11_g, f_12_g, f_13_g,
+				f_21_g, f_22_g, f_23_g,
+				f_31_g, f_32_g, f_33_g;
+
+	wire [4:0] f_11_b, f_12_b, f_13_b,
+			   f_21_b, f_22_b, f_23_b,
+			   f_31_b, f_32_b, f_33_b;
+
+	assign f_11_r = d11[15:11];
+	assign f_12_r = d12[15:11];
+	assign f_13_r = d13[15:11];
+	assign f_21_r = d41[15:11];
+	assign f_22_r = d42[15:11];
+	assign f_23_r = d43[15:11];
+	assign f_31_r = d71[15:11];
+	assign f_32_r = d72[15:11];
+	assign f_33_r = d73[15:11];
+
+	assign f_11_g = d11[10:5];
+	assign f_12_g = d12[10:5];
+	assign f_13_g = d13[10:5];
+	assign f_21_g = d41[10:5];
+	assign f_22_g = d42[10:5];
+	assign f_23_g = d43[10:5];
+	assign f_31_g = d71[10:5];
+	assign f_32_g = d72[10:5];
+	assign f_33_g = d73[10:5];
+
+	assign f_11_b = d11[4:0];
+	assign f_12_b = d12[4:0];
+	assign f_13_b = d13[4:0];
+	assign f_21_b = d41[4:0];
+	assign f_22_b = d42[4:0];
+	assign f_23_b = d43[4:0];
+	assign f_31_b = d71[4:0];
+	assign f_32_b = d72[4:0];
+	assign f_33_b = d73[4:0];
 
 
 	// filtered RGB
+ 	wire [4:0] filtered_r;
+	wire [5:0] filtered_g;
+	wire [4:0] filtered_b;
 
+	assign filtered_r = (f_12_r+f_21_r+f_23_r+f_32_r) - (f_22_r<<2);
+
+	assign filtered_g = (f_12_g+f_21_g+f_23_g+f_32_g) - (f_22_g<<2);
+
+	assign filtered_b = (f_12_b+f_21_b+f_23_b+f_32_b) - (f_22_b<<2);
 	
 
 	// final filtered data
-	
+	wire [15:0] filtered_data;
+
+	assign filtered_data[15:11] = filtered_r[4:0];
+	assign filtered_data[10:5] = filtered_g[5:0];
+	assign filtered_data[4:0] = filtered_b[4:0];	
 
 	// output data
-	
+	assign d_out = (flag_cursor_mid)? filtered_data : 0; 	
 
 	// data ready signal for write_filter_tb
-	// assign d_rdy = (wren == 0) & ((cursor == cursor3)|~flag_cursor_mid);
+	assign d_rdy = (wren == 0) & ((cursor == cursor3)|~flag_cursor_mid);
 	
-
-
 	// connection of wire and ram
+    ram ram11
+	(
+		// sys
+        .clock(clk),
 
+		// control signal
+        .address(addr11),
+        .wren(wren_row1),
+
+		// data
+        .data(d_in),
+        .q(q11)
+    );
+
+    ram ram12
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr12),
+        .wren(wren_row1),
+
+		// data
+        .data(d_in),
+        .q(q12)
+    );
+
+    ram ram13
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr13),
+        .wren(wren_row1),
+
+		// data
+        .data(d_in),
+        .q(q13)
+    );
+
+    ram ram21
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr21),
+        .wren(wren_row2),
+
+		// data
+        .data(d_in),
+        .q(q21)
+    );
+
+    ram ram22
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr22),
+        .wren(wren_row2),
+
+		// data
+        .data(d_in),
+        .q(q22)
+    );
+
+    ram ram23
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr23),
+        .wren(wren_row2),
+
+		// data
+        .data(d_in),
+        .q(q23)
+    );
+
+    ram ram31
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr31),
+        .wren(wren_row3),
+
+		// data
+        .data(d_in),
+        .q(q31)
+    );
+
+    ram ram32
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr32),
+        .wren(wren_row3),
+
+		// data
+        .data(d_in),
+        .q(q32)
+    );
+
+    ram ram33
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr33),
+        .wren(wren_row3),
+
+		// data
+        .data(d_in),
+        .q(q33)
+    );
    
 
+    ram ram41
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr41),
+        .wren(wren_row4),
+
+		// data
+        .data(d_in),
+        .q(q41)
+    );
+
+    ram ram42
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr42),
+        .wren(wren_row4),
+
+		// data
+        .data(d_in),
+        .q(q42)
+    );
+
+    ram ram43
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr43),
+        .wren(wren_row4),
+
+		// data
+        .data(d_in),
+        .q(q43)
+    );
+
+    ram ram51
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr51),
+        .wren(wren_row5),
+
+		// data
+        .data(d_in),
+        .q(q51)
+    );
+
+    ram ram52
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr52),
+        .wren(wren_row5),
+
+		// data
+        .data(d_in),
+        .q(q52)
+    );
+
+    ram ram53
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr53),
+        .wren(wren_row5),
+
+		// data
+        .data(d_in),
+        .q(q53)
+    );
+
+    ram ram61
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr61),
+        .wren(wren_row6),
+
+		// data
+        .data(d_in),
+        .q(q61)
+    );
+
+    ram ram62
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr62),
+        .wren(wren_row6),
+
+		// data
+        .data(d_in),
+        .q(q62)
+    );
+
+    ram ram63
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr63),
+        .wren(wren_row6),
+
+		// data
+        .data(d_in),
+        .q(q63)
+    );
+	
+    ram ram71
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr71),
+        .wren(wren_row7),
+
+		// data
+        .data(d_in),
+        .q(q71)
+    );
+
+    ram ram72
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr72),
+        .wren(wren_row7),
+
+		// data
+        .data(d_in),
+        .q(q72)
+    );
+
+    ram ram73
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr73),
+        .wren(wren_row7),
+
+		// data
+        .data(d_in),
+        .q(q73)
+    );
+
+    ram ram81
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr81),
+        .wren(wren_row8),
+
+		// data
+        .data(d_in),
+        .q(q81)
+    );
+
+    ram ram82
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr82),
+        .wren(wren_row8),
+
+		// data
+        .data(d_in),
+        .q(q82)
+    );
+
+    ram ram83
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr83),
+        .wren(wren_row8),
+
+		// data
+        .data(d_in),
+        .q(q83)
+    );
+
+    ram ram91
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr91),
+        .wren(wren_row9),
+
+		// data
+        .data(d_in),
+        .q(q91)
+    );
+
+    ram ram92
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr92),
+        .wren(wren_row9),
+
+		// data
+        .data(d_in),
+        .q(q92)
+    );
+
+    ram ram93
+	(
+		// sys
+        .clock(clk),
+
+		// control signal
+        .address(addr93),
+        .wren(wren_row9),
+
+		// data
+        .data(d_in),
+        .q(q93)
+    );	
 endmodule
