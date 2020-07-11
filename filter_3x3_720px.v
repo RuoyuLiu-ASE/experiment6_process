@@ -185,6 +185,26 @@ module filter_3x3_720px
 			assign d71 = q81;
 			assign d81 = q91;
 			assign d91 = q11;
+
+			assign d12 = q22;
+			assign d22 = q32;
+			assign d32 = q42;
+			assign d42 = q52;
+			assign d52 = q62;
+			assign d62 = q72;
+			assign d72 = q82;
+			assign d82 = q92;
+			assign d92 = q12;
+
+			assign d13 = q23;
+			assign d23 = q33;
+			assign d33 = q43;
+			assign d43 = q53;
+			assign d53 = q63;
+			assign d63 = q73;
+			assign d73 = q83;
+			assign d83 = q93;
+			assign d93 = q13;
 		end	
 		default: 
 	endcase			
