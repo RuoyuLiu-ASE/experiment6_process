@@ -175,7 +175,7 @@ module filter_3x3_720px
 				d91, d92, d93;
 
 	case (state_combine)
-		9'b0_0000_0001:begin
+		9'b0_0000_0001: begin	// When state_ram1 = 1: The first row of ram is written
 			assign d11 = q21;
 			assign d21 = q31;
 			assign d31 = q41;
@@ -206,7 +206,285 @@ module filter_3x3_720px
 			assign d83 = q93;
 			assign d93 = q13;
 		end	
-		default: 
+		9'b0_0000_0010: begin	//When state_ram2 = 1, the second row of ram is written.
+			assign d11 = q31;
+			assign d21 = q41;
+			assign d31 = q51;
+			assign d41 = q61;
+			assign d51 = q71;
+			assign d61 = q81;
+			assign d71 = q91;
+			assign d81 = q11;
+			assign d91 = q21;
+
+			assign d12 = q32;
+			assign d22 = q42;
+			assign d32 = q52;
+			assign d42 = q62;
+			assign d52 = q72;
+			assign d62 = q82;
+			assign d72 = q92;
+			assign d82 = q12;
+			assign d92 = q22;
+
+			assign d13 = q33;
+			assign d23 = q43;
+			assign d33 = q53;
+			assign d43 = q63;
+			assign d53 = q73;
+			assign d63 = q83;
+			assign d73 = q93;
+			assign d83 = q13;
+			assign d93 = q23;
+		end	
+		9'b0_0000_0100: begin	//When state_ram3 = 1, the third row of ram is written.
+			assign d11 = q41;
+			assign d21 = q51;
+			assign d31 = q61;
+			assign d41 = q71;
+			assign d51 = q81;
+			assign d61 = q91;
+			assign d71 = q11;
+			assign d81 = q21;
+			assign d91 = q31;
+
+			assign d12 = q42;
+			assign d22 = q52;
+			assign d32 = q62;
+			assign d42 = q72;
+			assign d52 = q82;
+			assign d62 = q92;
+			assign d72 = q12;
+			assign d82 = q22;
+			assign d92 = q32;
+
+			assign d13 = q43;
+			assign d23 = q53;
+			assign d33 = q63;
+			assign d43 = q73;
+			assign d53 = q83;
+			assign d63 = q93;
+			assign d73 = q13;
+			assign d83 = q23;
+			assign d93 = q33;
+		end	
+		9'b0_0000_1000: begin	//When state_ram4 = 1, the fourth row of ram is written.
+			assign d11 = q51;
+			assign d21 = q61;
+			assign d31 = q71;
+			assign d41 = q81;
+			assign d51 = q91;
+			assign d61 = q11;
+			assign d71 = q21;
+			assign d81 = q31;
+			assign d91 = q41;
+
+			assign d12 = q52;
+			assign d22 = q62;
+			assign d32 = q72;
+			assign d42 = q82;
+			assign d52 = q92;
+			assign d62 = q12;
+			assign d72 = q22;
+			assign d82 = q32;
+			assign d92 = q42;
+
+			assign d13 = q53;
+			assign d23 = q63;
+			assign d33 = q73;
+			assign d43 = q83;
+			assign d53 = q93;
+			assign d63 = q13;
+			assign d73 = q23;
+			assign d83 = q33;
+			assign d93 = q43;
+		end	
+		9'b0_0001_0000: begin	//When state_ram5 = 1, the fifth row of ram is written.
+			assign d11 = q61;
+			assign d21 = q71;
+			assign d31 = q81;
+			assign d41 = q91;
+			assign d51 = q11;
+			assign d61 = q21;
+			assign d71 = q31;
+			assign d81 = q41;
+			assign d91 = q51;
+
+			assign d12 = q62;
+			assign d22 = q72;
+			assign d32 = q82;
+			assign d42 = q92;
+			assign d52 = q12;
+			assign d62 = q22;
+			assign d72 = q32;
+			assign d82 = q42;
+			assign d92 = q52;
+
+			assign d13 = q63;
+			assign d23 = q73;
+			assign d33 = q83;
+			assign d43 = q93;
+			assign d53 = q13;
+			assign d63 = q23;
+			assign d73 = q33;
+			assign d83 = q43;
+			assign d93 = q53;
+		end	
+		9'b0_0010_0000: begin	//When state_ram6 = 1, the sixth row of ram is written.
+			assign d11 = q71;
+			assign d21 = q81;
+			assign d31 = q91;
+			assign d41 = q11;
+			assign d51 = q21;
+			assign d61 = q31;
+			assign d71 = q41;
+			assign d81 = q51;
+			assign d91 = q61;
+
+			assign d12 = q72;
+			assign d22 = q82;
+			assign d32 = q92;
+			assign d42 = q12;
+			assign d52 = q22;
+			assign d62 = q32;
+			assign d72 = q42;
+			assign d82 = q52;
+			assign d92 = q62;
+
+			assign d13 = q73;
+			assign d23 = q83;
+			assign d33 = q93;
+			assign d43 = q13;
+			assign d53 = q23;
+			assign d63 = q33;
+			assign d73 = q43;
+			assign d83 = q53;
+			assign d93 = q63;
+		end	
+		9'b0_0100_0000: begin	//When state_ram7 = 1, the seventh of ram is written.
+			assign d11 = q81;
+			assign d21 = q91;
+			assign d31 = q11;
+			assign d41 = q21;
+			assign d51 = q31;
+			assign d61 = q41;
+			assign d71 = q51;
+			assign d81 = q61;
+			assign d91 = q71;
+
+			assign d12 = q82;
+			assign d22 = q92;
+			assign d32 = q12;
+			assign d42 = q22;
+			assign d52 = q32;
+			assign d62 = q42;
+			assign d72 = q52;
+			assign d82 = q62;
+			assign d92 = q72;
+
+			assign d13 = q83;
+			assign d23 = q93;
+			assign d33 = q13;
+			assign d43 = q23;
+			assign d53 = q33;
+			assign d63 = q43;
+			assign d73 = q53;
+			assign d83 = q63;
+			assign d93 = q73;
+		end	
+		9'b0_1000_0000: begin	//When state_ram8 = 1, the eighth of ram is written.
+			assign d11 = q91;
+			assign d21 = q11;
+			assign d31 = q21;
+			assign d41 = q31;
+			assign d51 = q41;
+			assign d61 = q51;
+			assign d71 = q61;
+			assign d81 = q71;
+			assign d91 = q81;
+
+			assign d12 = q92;
+			assign d22 = q12;
+			assign d32 = q22;
+			assign d42 = q32;
+			assign d52 = q42;
+			assign d62 = q52;
+			assign d72 = q62;
+			assign d82 = q72;
+			assign d92 = q82;
+
+			assign d13 = q93;
+			assign d23 = q13;
+			assign d33 = q23;
+			assign d43 = q33;
+			assign d53 = q43;
+			assign d63 = q53;
+			assign d73 = q63;
+			assign d83 = q73;
+			assign d93 = q83;
+		end	
+		9'b1_0000_0000: begin	//When state_ram9 = 1, the ninth of ram is written.
+			assign d11 = q11;
+			assign d21 = q21;
+			assign d31 = q31;
+			assign d41 = q41;
+			assign d51 = q51;
+			assign d61 = q61;
+			assign d71 = q71;
+			assign d81 = q81;
+			assign d91 = q91;
+
+			assign d12 = q12;
+			assign d22 = q22;
+			assign d32 = q32;
+			assign d42 = q42;
+			assign d52 = q52;
+			assign d62 = q62;
+			assign d72 = q72;
+			assign d82 = q82;
+			assign d92 = q92;
+
+			assign d13 = q13;
+			assign d23 = q23;
+			assign d33 = q33;
+			assign d43 = q43;
+			assign d53 = q53;
+			assign d63 = q63;
+			assign d73 = q73;
+			assign d83 = q83;
+			assign d93 = q93;
+		end	
+		default: begin
+			assign d11 = 16'b0;
+			assign d21 = 16'b0;
+			assign d31 = 16'b0;
+			assign d41 = 16'b0;
+			assign d51 = 16'b0;
+			assign d61 = 16'b0;
+			assign d71 = 16'b0;
+			assign d81 = 16'b0;
+			assign d91 = 16'b0;
+
+			assign d12 = 16'b0;
+			assign d22 = 16'b0;
+			assign d32 = 16'b0;
+			assign d42 = 16'b0;
+			assign d52 = 16'b0;
+			assign d62 = 16'b0;
+			assign d72 = 16'b0;
+			assign d82 = 16'b0;
+			assign d92 = 16'b0;
+
+			assign d13 = 16'b0;
+			assign d23 = 16'b0;
+			assign d33 = 16'b0;
+			assign d43 = 16'b0;
+			assign d53 = 16'b0;
+			assign d63 = 16'b0;
+			assign d73 = 16'b0;
+			assign d83 = 16'b0;
+			assign d93 = 16'b0;
+		end 
 	endcase			
 
 	assign d11 = (state_ram3 == 1)? q11 : (state_ram1 == 1)? q21 : q31;
