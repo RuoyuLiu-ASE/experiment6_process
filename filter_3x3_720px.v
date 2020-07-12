@@ -177,6 +177,61 @@ module filter_3x3_720px
 	assign d11 = (state_ram9 == 1)? q11 : (state_ram8 == 1)? q91 : (state_ram7 == 1)? q81 : (state_ram6 == 1)? q71:
 				 (state_ram5 == 1)? q61 : (state_ram4 == 1)? q51 : (state_ram3 == 1)? q41 : (state_ram1 == 1)? q21:q31;
 
+	assign d12 = (state_ram9 == 1)? q12 : (state_ram8 == 1)? q92 : (state_ram7 == 1)? q82 : (state_ram6 == 1)? q72:
+				 (state_ram5 == 1)? q62 : (state_ram4 == 1)? q52 : (state_ram3 == 1)? q42 : (state_ram1 == 1)? q22:q32;
+
+	assign d13 = (state_ram9 == 1)? q13 : (state_ram8 == 1)? q93 : (state_ram7 == 1)? q83 : (state_ram6 == 1)? q73:
+				 (state_ram5 == 1)? q63 : (state_ram4 == 1)? q53 : (state_ram3 == 1)? q43 : (state_ram1 == 1)? q23:q33;
+
+
+	assign d21 = (state_ram9 == 1)? q21 : (state_ram8 == 1)? q11 : (state_ram7 == 1)? q91 : (state_ram6 == 1)? q81:
+				 (state_ram5 == 1)? q71 : (state_ram4 == 1)? q61 : (state_ram3 == 1)? q51 : (state_ram1 == 1)? q31:q41;
+
+	assign d22 = (state_ram9 == 1)? q22 : (state_ram8 == 1)? q12 : (state_ram7 == 1)? q92 : (state_ram6 == 1)? q82:
+				 (state_ram5 == 1)? q72 : (state_ram4 == 1)? q62 : (state_ram3 == 1)? q52 : (state_ram1 == 1)? q32:q42;
+
+	assign d23 = (state_ram9 == 1)? q23 : (state_ram8 == 1)? q13 : (state_ram7 == 1)? q93 : (state_ram6 == 1)? q83:
+				 (state_ram5 == 1)? q73 : (state_ram4 == 1)? q63 : (state_ram3 == 1)? q53 : (state_ram1 == 1)? q33:q43;
+
+
+	assign d31 = (state_ram9 == 1)? q31 : (state_ram8 == 1)? q21 : (state_ram7 == 1)? q11 : (state_ram6 == 1)? q91:
+				 (state_ram5 == 1)? q81 : (state_ram4 == 1)? q71 : (state_ram3 == 1)? q61 : (state_ram1 == 1)? q41:q51;
+
+	assign d32 = (state_ram9 == 1)? q32 : (state_ram8 == 1)? q22 : (state_ram7 == 1)? q12 : (state_ram6 == 1)? q92 :
+				 (state_ram5 == 1)? q82 : (state_ram4 == 1)? q72 : (state_ram3 == 1)? q62 : (state_ram1 == 1)? q42 :q52;
+
+	assign d33 = (state_ram9 == 1)? q33 : (state_ram8 == 1)? q23 : (state_ram7 == 1)? q13 : (state_ram6 == 1)? q93 :
+				 (state_ram5 == 1)? q83 : (state_ram4 == 1)? q73 : (state_ram3 == 1)? q63 : (state_ram1 == 1)? q43 :q53;
+
+
+	assign d41 = (state_ram9 == 1)? q41 : (state_ram8 == 1)? q31 : (state_ram7 == 1)? q21 : (state_ram6 == 1)? q11:
+				 (state_ram5 == 1)? q91 : (state_ram4 == 1)? q81 : (state_ram3 == 1)? q71 : (state_ram1 == 1)? q51:q61;
+
+	assign d42 = (state_ram9 == 1)? q42 : (state_ram8 == 1)? q32 : (state_ram7 == 1)? q22 : (state_ram6 == 1)? q12 :
+				 (state_ram5 == 1)? q92 : (state_ram4 == 1)? q82 : (state_ram3 == 1)? q72 : (state_ram1 == 1)? q52 :q62;
+
+	assign d43 = (state_ram9 == 1)? q43 : (state_ram8 == 1)? q33 : (state_ram7 == 1)? q23 : (state_ram6 == 1)? q13 :
+				 (state_ram5 == 1)? q93 : (state_ram4 == 1)? q83 : (state_ram3 == 1)? q73 : (state_ram1 == 1)? q53 :q63;
+
+
+	assign d51 = (state_ram9 == 1)? q51 : (state_ram8 == 1)? q41 : (state_ram7 == 1)? q31 : (state_ram6 == 1)? q21:
+				 (state_ram5 == 1)? q11 : (state_ram4 == 1)? q91 : (state_ram3 == 1)? q81 : (state_ram1 == 1)? q61:q71;
+
+	assign d52 = (state_ram9 == 1)? q52 : (state_ram8 == 1)? q42 : (state_ram7 == 1)? q32 : (state_ram6 == 1)? q22 :
+				 (state_ram5 == 1)? q12 : (state_ram4 == 1)? q92 : (state_ram3 == 1)? q82 : (state_ram1 == 1)? q62 :q72;
+
+	assign d53 = (state_ram9 == 1)? q53 : (state_ram8 == 1)? q43 : (state_ram7 == 1)? q33 : (state_ram6 == 1)? q23 :
+				 (state_ram5 == 1)? q13 : (state_ram4 == 1)? q93 : (state_ram3 == 1)? q83 : (state_ram1 == 1)? q63 :q73;
+
+
+	assign d61 = (state_ram9 == 1)? q61 : (state_ram8 == 1)? q51 : (state_ram7 == 1)? q41 : (state_ram6 == 1)? q31:
+				 (state_ram5 == 1)? q21 : (state_ram4 == 1)? q11 : (state_ram3 == 1)? q91 : (state_ram1 == 1)? q71:q81;
+
+	assign d62 = (state_ram9 == 1)? q62 : (state_ram8 == 1)? q52 : (state_ram7 == 1)? q42 : (state_ram6 == 1)? q32 :
+				 (state_ram5 == 1)? q22 : (state_ram4 == 1)? q12 : (state_ram3 == 1)? q92 : (state_ram1 == 1)? q72 :q82;
+
+	assign d63 = (state_ram9 == 1)? q63 : (state_ram8 == 1)? q53 : (state_ram7 == 1)? q43 : (state_ram6 == 1)? q33 :
+				 (state_ram5 == 1)? q23 : (state_ram4 == 1)? q13 : (state_ram3 == 1)? q93 : (state_ram1 == 1)? q73 :q83;
 /*				
 always@(*) begin
 	case (state_combine)
