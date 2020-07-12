@@ -56,7 +56,7 @@ module filter_3x3_720px
 	reg state_ram4, state_ram5, state_ram6;
 	reg state_ram7, state_ram8, state_ram9;
 
-	wire [8:0] state_combine; 	// Combine all state_ram to indicate which row is written better
+	//wire [8:0] state_combine; 	// Combine all state_ram to indicate which row is written better
 
 	always @ (posedge wren, posedge reset) begin
         if (reset == 1) begin
@@ -83,7 +83,7 @@ module filter_3x3_720px
         end
 	end
 
-	assign state_combine = {state_ram9,state_ram8,state_ram7,state_ram6,state_ram5,state_ram4,state_ram3,state_ram2,state_ram1};
+	//assign state_combine = {state_ram9,state_ram8,state_ram7,state_ram6,state_ram5,state_ram4,state_ram3,state_ram2,state_ram1};
 /******************************************************************************/
 /******************************************************************************/
 	// enable signal for each row of ram
@@ -164,16 +164,20 @@ module filter_3x3_720px
 				q81, q82, q83,
 				q91, q92, q93;				
 
-	reg [15:0] d11, d12, d13,
+	wire [15:0] d11, d12, d13,
 				d21, d22, d23,
 				d31, d32, d33;
-	reg [15:0] d41, d42, d43,
+	wire [15:0] d41, d42, d43,
 				d51, d52, d53,
 				d61, d62, d63;
-	reg [15:0] d71, d72, d73,
+	wire [15:0] d71, d72, d73,
 				d81, d82, d83,
 				d91, d92, d93;
-				
+
+	assign d11 = (state_ram9 == 1)? q11 : (state_ram8 == 1)? q91 : (state_ram7 == 1)? q81 : (state_ram6 == 1)? q71:
+				 (state_ram5 == 1)? q61 : (state_ram4 == 1)? q51 : (state_ram3 == 1)? q41 : (state_ram1 == 1)? q21:q31;
+
+/*				
 always@(*) begin
 	case (state_combine)
 		9'b0_0000_0001: begin	// When state_ram1 = 1: The first row of ram is written
@@ -488,6 +492,7 @@ always@(*) begin
 		end 
 	endcase	
 end	
+*/
 /******************************************************************************/
 /******************************************************************************
 //注意：这里是小套娃，每三行ram套一个。如果最后结果不对，很有可能是9行ram的大套娃
