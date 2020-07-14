@@ -127,29 +127,29 @@ module filter_3x3_720px
 			   addr51, addr52, addr53,
 			   addr61, addr62, addr63;
 
-	assign addr41 = ( wren==1 & wren_row1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
-	assign addr42 = ( wren==1 & wren_row1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr43 = ( wren==1 & wren_row1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr51 = ( wren==1 & wren_row2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
-	assign addr52 = ( wren==1 & wren_row2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr53 = ( wren==1 & wren_row2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr61 = ( wren==1 & wren_row3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
-	assign addr62 = ( wren==1 & wren_row3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr63 = ( wren==1 & wren_row3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;	
+	assign addr41 = ( wren==1 & wren_row4==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
+	assign addr42 = ( wren==1 & wren_row4==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
+	assign addr43 = ( wren==1 & wren_row4==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
+	assign addr51 = ( wren==1 & wren_row5==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
+	assign addr52 = ( wren==1 & wren_row5==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
+	assign addr53 = ( wren==1 & wren_row5==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
+	assign addr61 = ( wren==1 & wren_row6==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
+	assign addr62 = ( wren==1 & wren_row6==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
+	assign addr63 = ( wren==1 & wren_row6==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;	
 /******************************************************************************/	
 	wire [7:0] addr71, addr72, addr73,
 			   addr81, addr82, addr83,
 			   addr91, addr92, addr93;
 
-	assign addr71 = ( wren==1 & wren_row1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr72 = ( wren==1 & wren_row1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr73 = ( wren==1 & wren_row1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;
-	assign addr81 = ( wren==1 & wren_row2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr82 = ( wren==1 & wren_row2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr83 = ( wren==1 & wren_row2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;
-	assign addr91 = ( wren==1 & wren_row3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr92 = ( wren==1 & wren_row3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr93 = ( wren==1 & wren_row3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;	
+	assign addr71 = ( wren==1 & wren_row7==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
+	assign addr72 = ( wren==1 & wren_row7==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
+	assign addr73 = ( wren==1 & wren_row7==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;
+	assign addr81 = ( wren==1 & wren_row8==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
+	assign addr82 = ( wren==1 & wren_row8==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
+	assign addr83 = ( wren==1 & wren_row8==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;
+	assign addr91 = ( wren==1 & wren_row9==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
+	assign addr92 = ( wren==1 & wren_row9==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
+	assign addr93 = ( wren==1 & wren_row9==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;	
 /******************************************************************************/	
 //注意：这是大套娃
 	// memory output of ram
