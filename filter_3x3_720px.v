@@ -83,7 +83,6 @@ module filter_3x3_720px
         end
 	end
 
-	//assign state_combine = {state_ram9,state_ram8,state_ram7,state_ram6,state_ram5,state_ram4,state_ram3,state_ram2,state_ram1};
 /******************************************************************************/
 /******************************************************************************/
 	// enable signal for each row of ram
@@ -127,29 +126,29 @@ module filter_3x3_720px
 			   addr51, addr52, addr53,
 			   addr61, addr62, addr63;
 
-	assign addr41 = ( wren==1 & wren_row4==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
-	assign addr42 = ( wren==1 & wren_row4==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr43 = ( wren==1 & wren_row4==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr51 = ( wren==1 & wren_row5==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
-	assign addr52 = ( wren==1 & wren_row5==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr53 = ( wren==1 & wren_row5==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr61 = ( wren==1 & wren_row6==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 0 : -1;
-	assign addr62 = ( wren==1 & wren_row6==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr63 = ( wren==1 & wren_row6==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;	
+	assign addr41 =  ( wren==1 & wren_row4==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] - 1 : -1;
+	assign addr42 =  ( wren==1 & wren_row4==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] + 0 : -1;
+	assign addr43 =  ( wren==1 & wren_row4==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] + 1 : -1;
+	assign addr51 =  ( wren==1 & wren_row5==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] - 1 : -1;
+	assign addr52 =  ( wren==1 & wren_row5==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] + 0 : -1;
+	assign addr53 =  ( wren==1 & wren_row5==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] + 1 : -1;
+	assign addr61 =  ( wren==1 & wren_row6==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] - 1 : -1;
+	assign addr62 =  ( wren==1 & wren_row6==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] + 0 : -1;
+	assign addr63 =  ( wren==1 & wren_row6==1 )? cursor1[7:0] : ( flag_cursor_mid )? cursor1[7:0] + 1 : -1;	
 /******************************************************************************/	
 	wire [7:0] addr71, addr72, addr73,
 			   addr81, addr82, addr83,
 			   addr91, addr92, addr93;
 
-	assign addr71 = ( wren==1 & wren_row7==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr72 = ( wren==1 & wren_row7==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr73 = ( wren==1 & wren_row7==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;
-	assign addr81 = ( wren==1 & wren_row8==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr82 = ( wren==1 & wren_row8==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr83 = ( wren==1 & wren_row8==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;
-	assign addr91 = ( wren==1 & wren_row9==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : -1;
-	assign addr92 = ( wren==1 & wren_row9==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 2 : -1;
-	assign addr93 = ( wren==1 & wren_row9==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 3 : -1;	
+	assign addr71 = ( wren==1 & wren_row7==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] - 1 : -1;
+	assign addr72 = ( wren==1 & wren_row7==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] + 0 : -1; 
+	assign addr73 = ( wren==1 & wren_row7==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] + 1 : -1;
+	assign addr81 = ( wren==1 & wren_row8==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] - 1 : -1;
+	assign addr82 = ( wren==1 & wren_row8==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] + 0 : -1; 
+	assign addr83 = ( wren==1 & wren_row8==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] + 1 : -1;
+	assign addr91 = ( wren==1 & wren_row9==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] - 1 : -1;
+	assign addr92 = ( wren==1 & wren_row9==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] + 0 : -1; 
+	assign addr93 = ( wren==1 & wren_row9==1 )? cursor2[7:0] : ( flag_cursor_mid )? cursor2[7:0] + 1 : -1;
 /******************************************************************************/	
 //注意：这是大套娃
 	// memory output of ram
@@ -686,12 +685,9 @@ end
 	wire [5:0] filtered_g;
 	wire [4:0] filtered_b;
 
-	assign filtered_r = (f_12_r+f_21_r+f_23_r+f_32_r) - (f_22_r<<2);
-
-	assign filtered_g = (f_12_g+f_21_g+f_23_g+f_32_g) - (f_22_g<<2);
-
-	assign filtered_b = (f_12_b+f_21_b+f_23_b+f_32_b) - (f_22_b<<2);
-	
+	assign filtered_r = (f_12_r+f_21_r+f_23_r+f_32_r) + (f_22_r*WA1); 
+	assign filtered_g = (f_12_g+f_21_g+f_23_g+f_32_g) + (f_22_g*WA1);
+	assign filtered_b = (f_12_b+f_21_b+f_23_b+f_32_b) + (f_22_b*WA1);
 
 	// final filtered data
 	wire [15:0] filtered_data;
